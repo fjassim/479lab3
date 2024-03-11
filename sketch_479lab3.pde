@@ -18,16 +18,20 @@ import g4p_controls.*;
 import processing.serial.*;
 import g4p_controls.GButton;
 GButton startBtn;
+GButton leaderboard;
 
 Serial myPort;
 String tab = "intro";
+PImage snakeImg;
 
 void setup(){
-  startBtn= new GButton(this,200,80,100,40);
-  size(500,500);
+  startBtn= new GButton(this,280,360,160,60);
+  leaderboard = new GButton(this, 280,420,160,60);
+  snakeImg = loadImage("snakeImg.png");
+  size(700,700);
   background(255);
-  myPort = new Serial(this,Serial.list()[0],115200);
-  myPort.bufferUntil('\n');
+  //myPort = new Serial(this,Serial.list()[0],115200);
+  //myPort.bufferUntil('\n');
 }
 
 void draw(){
