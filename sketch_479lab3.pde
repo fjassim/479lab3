@@ -17,11 +17,13 @@ import g4p_controls.*;
 
 import processing.serial.*;
 import g4p_controls.GButton;
+GButton startBtn;
 
 Serial myPort;
 String tab = "intro";
 
 void setup(){
+  startBtn= new GButton(this,200,80,100,40);
   size(500,500);
   background(255);
   myPort = new Serial(this,Serial.list()[0],115200);
