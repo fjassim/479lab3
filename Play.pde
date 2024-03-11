@@ -47,6 +47,7 @@ void play_draw(){
   }
     //startBtn.moveTo(500,100);
     startBtn.setVisible(false);
+    leaderboard.setVisible(false);
 
   pushStyle();
   
