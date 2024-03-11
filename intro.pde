@@ -6,11 +6,11 @@ void intro_draw(){
   textSize(24);
   textAlign(CENTER);
   
-  GButton startBtn;
-  startBtn= new GButton(this,200,80,100,40);
-  startBtn.setText("Start Game");
+  //GButton startBtn;
+  startBtn.setText("START");
   startBtn.addEventHandler(this,"startGame");
   startBtn.setLocalColorScheme(GCScheme.RED_SCHEME);
+  startBtn.setTextBold();
   pushStyle();
 }
 
