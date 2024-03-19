@@ -1,28 +1,30 @@
-
-
-class CheckerSquare{
-  float x,y;
-  int size;
+String Score= "";
+long interval = 500;
+long start= 0;
+//class CheckerSquare{
+//  float x,y;
+//  int size;
   
-  CheckerSquare(float x, float y, int size){
-    this.x = x;
-    this.y = y;
-    this.size = size;
-  }
-}
+//  CheckerSquare(float x, float y, int size){
+//    this.x = x;
+//    this.y = y;
+//    this.size = size;
+//  }
+//}
 
-ArrayList<CheckerSquare> squares;
-void createSquares(){
-  //size(400,400);
-  squares = new ArrayList<CheckerSquare>();
-  int squareSize=50;
-  for(int i = 0; i < height; i+=squareSize){
-    for(int j = 0; j <width; j+=squareSize){
-      CheckerSquare square = new CheckerSquare(j,i,squareSize);
-      squares.add(square);
-    }
-  }
-}
+//ArrayList<CheckerSquare> squares;
+//void createSquares(){
+//  //size(400,400);
+//  squares = new ArrayList<CheckerSquare>();
+//  int squareSize=50;
+//  for(int i = 0; i < height; i+=squareSize){
+//    for(int j = 0; j <width; j+=squareSize){
+//      CheckerSquare square = new CheckerSquare(j,i,squareSize);
+//      squares.add(square);
+//    }
+//  }
+  
+//}
 
 
 
@@ -31,24 +33,30 @@ void play_draw(){
   background(255);
   fill(0);
   textSize(28);
-  text("PLAY",100,50);
   textSize(24);
   textAlign(CENTER);
-  createSquares();
-  
-  for(CheckerSquare square: squares){
-    if((int((square.y/square.size) + (square.x / square.size))) % 2 == 0){
-      fill(255,165,0);
-    } else {
-      fill(255,218,185);
+  Score = "Score: "+ (game1.getScore());
+  text(Score,50, 20);
+  stroke(0);
+  rect(50,50, 600, 600);
+  stroke(255, 255, 0);
+  rect(65,65,570, 570);
+  startBtn.moveTo(1000,1000);
+  leaderboard.moveTo(1000,1000);
+  stroke(0);
+  fill(snake.player_color);
+  snake.draw();
+  if (millis()-start>= interval){
+    if(snake.direction != -1){
+      snake.move(snake.direction);
     }
-    rect(square.x, square.y, square.size, square.size);
-  
+    
+    start= millis();
   }
-    //startBtn.moveTo(500,100);
-    startBtn.setVisible(false);
-    leaderboard.setVisible(false);
-
+  
+  fill(food.eatable_color);
+  food.draw();
+  
   pushStyle();
   
 }

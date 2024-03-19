@@ -12,7 +12,7 @@ import org.gicentre.utils.network.traer.animation.*;
 import org.gicentre.utils.io.*;
 
 import gifAnimation.*;
-
+import java.util.*;
 import g4p_controls.*;
 
 import processing.serial.*;
@@ -23,15 +23,19 @@ GButton leaderboard;
 Serial myPort;
 String tab = "intro";
 PImage snakeImg;
+Random rand = new Random();
 
+Player snake= new Player();
+Eatables food = new Eatables();
+Game game1= new Game();
 void setup(){
   startBtn= new GButton(this,280,360,160,60);
   leaderboard = new GButton(this, 280,420,160,60);
   snakeImg = loadImage("snakeImg.png");
   size(700,700);
   background(255);
-  //myPort = new Serial(this,Serial.list()[0],115200);
-  //myPort.bufferUntil('\n');
+   myPort = new Serial(this,Serial.list()[2],9600);
+  myPort.bufferUntil('\n');
 }
 
 void draw(){
@@ -40,4 +44,16 @@ void draw(){
   } else if(tab=="Play"){
     play_draw();
   }
+  
+  
+}
+void serialEvent(Serial myPort){
+  
+  String tempval = myPort.readStringUntil('\n');
+  tempval= tempval.trim();
+ 
+  if (tempval.length()==1){
+     println(tempval);
+  }
+  
 }
