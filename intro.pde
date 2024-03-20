@@ -1,12 +1,14 @@
 void intro_draw(){
   background(173, 216, 230); // RGB values for light blue
   textSize(45);
-  text("SNAKE GAME",350,80);
+  
   fill(0,0,170);
   textAlign(CENTER);
+  text("SNAKE GAME",350,80);
   
   //GButton startBtn;
   image(snakeImg,250,130, 200, 200);
+  startBtn.moveTo(280,360);
   startBtn.setText("START");
   startBtn.addEventHandler(this,"startGame");
   startBtn.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
@@ -21,6 +23,7 @@ void intro_draw(){
 public void startGame(GButton button, GEvent event){
   if(event == GEvent.CLICKED){
     tab="Play";
+    game1.restart();
     println("game started\n");
   }
 }

@@ -24,7 +24,11 @@ class Player{
       game1.setScore(game1.getScore()+1);
       length++;
     }
-    if (!checkBoundary(x_position, y_position, num)) return;
+    if (!checkBoundary(x_position, y_position, num)) {
+      tab= "intro";
+      game1.gameover();
+      return;
+    }
     switch(num){
       case 0:
       y_position-=dimension;
