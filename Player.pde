@@ -26,9 +26,11 @@ class Player{
     }
     if (!checkBoundary(x_position, y_position, num)) {
       tab= "intro";
+       myPort.write('1');
       game1.gameover();
       return;
     }
+    
     switch(num){
       case 0:
       y_position-=dimension;
@@ -71,6 +73,11 @@ class Player{
     if (y_pos< 50 || y_pos>=620){
       return false;
     }
+    for (int i= 0; i<prevpos.size()-1;i++ ){//check if the snake is attacking itself
+      if((x_pos==prevpos.get(i)[0])&& (y_pos==prevpos.get(i)[1])){
+        return false;
+      }
+    }
     return true;
   }
   boolean checkFood(int x_pos, int y_pos, int num){
@@ -101,7 +108,14 @@ class Player{
   void draw(){
     
     ArrayList<Integer []> temp_prev=(ArrayList<Integer []>) prevpos.clone();
+    
+   
     rect(x_position, y_position, dimension, dimension);//draw head
+    fill(255);
+    circle(x_position+15, y_position+15, 15);//draw eyes;
+    fill(0);
+    circle(x_position+15, y_position+15, 5);//draw pupil;
+     fill(snake.player_color);
     if (x_position == temp_prev.get(0)[0] && y_position == temp_prev.get(0)[1]){
       //println("here");
       for (int i= 1; i< length; i++){
