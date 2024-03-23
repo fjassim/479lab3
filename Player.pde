@@ -73,8 +73,10 @@ class Player{
     if (y_pos< 50 || y_pos>=620){
       return false;
     }
-    for (int i= 0; i<prevpos.size()-1;i++ ){//check if the snake is attacking itself
+    for (int i= 1; i<prevpos.size()-1;i++ ){//check if the snake is attacking itself
       if((x_pos==prevpos.get(i)[0])&& (y_pos==prevpos.get(i)[1])){
+        println(prevpos.get(i)[0] +" and "+prevpos.get(i)[1] );
+        
         return false;
       }
     }
