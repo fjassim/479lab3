@@ -13,6 +13,7 @@ void intro_draw(){
   startBtn.addEventHandler(this,"startGame");
   startBtn.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
   startBtn.setTextBold();
+  leaderboard.moveTo(280,420);
   leaderboard.setText("LEADERBOARD");
   leaderboard.addEventHandler(this,"loadLeaderboard");
   leaderboard.setLocalColorScheme(GCScheme.ORANGE_SCHEME);

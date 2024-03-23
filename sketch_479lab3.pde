@@ -23,6 +23,7 @@ GButton leaderboard;
 Serial myPort;
 String tab = "intro";
 PImage snakeImg;
+PImage trophyImg;
 Random rand = new Random();
 
 Player snake= new Player();
@@ -32,10 +33,11 @@ void setup(){
   startBtn= new GButton(this,280,360,160,60);
   leaderboard = new GButton(this, 280,420,160,60);
   snakeImg = loadImage("snakeImg.png");
+  trophyImg = loadImage("trophy.png");
   size(700,700);
   background(255);
-   myPort = new Serial(this,Serial.list()[2],9600);
-  myPort.bufferUntil('\n');
+   //myPort = new Serial(this,Serial.list()[0],9600);
+  //myPort.bufferUntil('\n');
 }
 
 void draw(){
@@ -43,6 +45,8 @@ void draw(){
     intro_draw();
   } else if(tab=="Play"){
     play_draw();
+  } else if(tab=="Leaderboard"){
+    leaderboard_draw();
   }
   
   

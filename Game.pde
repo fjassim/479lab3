@@ -1,3 +1,6 @@
+  int[]scores = {0,0,0};
+
+
 class Game{
   int score;
   int highscore= 0;
@@ -7,6 +10,12 @@ class Game{
   }
   void setHighScore(int score) {
     highscore = max(score, highscore);
+    scores[0]=highscore;
+    if(score != highscore && score > scores[1]){
+      scores[1] = score;
+    } else if(score != highscore && score > scores[2]){
+      scores[2] = score;
+    }
     
   }
   int getHighScore (){

@@ -11,8 +11,9 @@ void keyPressed(){
    }
    else if(keyCode==RIGHT){
      snake.move(3);
-   }
-   
- }
+   } 
+ }  else if (key == 'b' || key == 'B') {
+    tab = "intro";
+  }
   
 }
