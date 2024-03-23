@@ -36,8 +36,11 @@ void setup(){
   trophyImg = loadImage("trophy.png");
   size(700,700);
   background(255);
-   //myPort = new Serial(this,Serial.list()[0],9600);
-  //myPort.bufferUntil('\n');
+  for (var i : Serial.list()){
+    println(i);
+  }
+  myPort = new Serial(this,Serial.list()[2],9600);
+  myPort.bufferUntil('\n');
 }
 
 void draw(){
@@ -58,6 +61,26 @@ void serialEvent(Serial myPort){
  
   if (tempval.length()==1){
      println(tempval);
+  }
+  if(tab=="Play"){
+    println("meow");
+    if(tempval.equals("1")){//left
+    
+      snake.move(2);
+
+    }
+    else if(tempval.equals("2")){//up
+      snake.move(0);
+      
+    }
+    else if(tempval.equals("3")){//down
+      snake.move(1);
+
+    }
+    else if(tempval.equals("4")){//right
+      snake.move(3);
+
+    }
   }
   
 }
